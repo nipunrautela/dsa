@@ -1,17 +1,18 @@
 #include<iostream>
+#include<cstdint>
 
-long long binPow(long long base, long long exp) {
+int64_t binPow(int64_t base, int64_t exp) {
     if (exp == 0)
         return 1;
-    long long res = binPow(base, exp/2);
+    int64_t res = binPow(base, exp/2);
     if (exp % 2 == 1) 
         return res * res * base;
     else
         return res * res;
 }
 
-long long binPowIterative(long long base, long long exp) {
-    long long res = 1;
+int64_t binPowIterative(int64_t base, int64_t exp) {
+    int64_t res = 1;
     while(exp != 0) {
         if (exp % 2 == 1) {
             res *= base;
@@ -24,8 +25,8 @@ long long binPowIterative(long long base, long long exp) {
 }
 
 struct TestCase {
-    long long base;
-    long long exp;
+    int64_t base;
+    int64_t exp;
 
     void print() {
         std::cout << "Base: " << base << std::endl;

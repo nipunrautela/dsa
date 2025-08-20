@@ -1,7 +1,8 @@
 #include<iostream>
+#include<cstdint>
 
-long long binPowModular(long long base, long long exp, long long mod) {
-    long long res = 1;
+int64_t binPowModular(int64_t base, int64_t exp, int64_t mod) {
+    int64_t res = 1;
     base %= mod;
 
     while(exp > 0) {
@@ -15,8 +16,8 @@ long long binPowModular(long long base, long long exp, long long mod) {
 }
 
 struct TestCase {
-    long long base;
-    long long exp;
+    int64_t base;
+    int64_t exp;
 
     void print() {
         std::cout << "Base: " << base << std::endl;
@@ -25,7 +26,7 @@ struct TestCase {
 };
 
 int main() {
-    constexpr long long MOD = 1e9 + 7;
+    constexpr int64_t MOD = 1e9 + 7;
     TestCase testCases[] = {
         {1021, 16},
         {1224, 92},

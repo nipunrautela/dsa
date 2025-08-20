@@ -1,16 +1,17 @@
 #include<iostream>
 #include<vector>
+#include<cstdint>
 
-std::vector<int> applyPermutation(const std::vector<int>& sequence, const std::vector<int>& permutation) {
-    std::vector<int> newSequence(sequence.size());
-    for(int i=0; i<sequence.size(); i++) {
+std::vector<int32_t> applyPermutation(const std::vector<int32_t>& sequence, const std::vector<int32_t>& permutation) {
+    std::vector<int32_t> newSequence(sequence.size());
+    for(int32_t i=0; i<sequence.size(); i++) {
         newSequence[i] = sequence[permutation[i]];
     }
 
     return newSequence;
 }
 
-std::vector<int> permute(std::vector<int> sequence, std::vector<int> permutation, long long k) {
+std::vector<int32_t> permute(std::vector<int32_t> sequence, std::vector<int32_t> permutation, int64_t k) {
     while(k > 0) {
         if (k % 2 == 1) {
             sequence = applyPermutation(sequence, permutation);
@@ -22,15 +23,15 @@ std::vector<int> permute(std::vector<int> sequence, std::vector<int> permutation
     return sequence;
 }
 
-void printVector(const std::vector<int>& v) {
-    for(int x: v)
+void printVector(const std::vector<int32_t>& v) {
+    for(int32_t x: v)
     std::cout << x << " ";
 }
 
 struct TestCase {
-    std::vector<int> sequence;
-    std::vector<int> permutation;
-    long long operationCount;
+    std::vector<int32_t> sequence;
+    std::vector<int32_t> permutation;
+    int64_t operationCount;
 
     void printTestCaseData() {
         std::cout << "Original Sequence: ";
@@ -46,7 +47,7 @@ struct TestCase {
     }
 };
 
-int main() {
+int32_t main() {
     TestCase testCases[] = {
         {
             {53, 41, 12, 3, 74, 13},
@@ -67,7 +68,7 @@ int main() {
 
     for(TestCase t: testCases) {
         t.printTestCaseData();
-        std::vector<int> resSequence = permute(t.sequence, t.permutation, t.operationCount);
+        std::vector<int32_t> resSequence = permute(t.sequence, t.permutation, t.operationCount);
         std::cout << "Result: ";
         printVector(resSequence);
         std::cout << std::endl;
